@@ -1,0 +1,8 @@
+{
+  "label": "基本动画",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "description": "使用内部 DSL 和 MilInstantAnimator 实现动画"
+  }
+}
