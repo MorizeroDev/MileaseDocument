@@ -89,50 +89,29 @@ const ColorInterpolation = () => {
 
             <div style={{ width: '100%', marginBottom: '20px' }}>
                 <h4>RGB 插值过渡</h4>
-                <div style={{ width: '100%', height: '50px', display: 'flex' }}>
-                    {rgbInterpolation.map((color, index) => (
-                        <div
-                            key={index}
-                            style={{
-                                width: `${100 / rgbInterpolation.length}%`,
-                                background: `rgb(${color.join(',')})`,
-                                height: '100%',
-                            }}
-                        />
-                    ))}
-                </div>
+                <div style={{
+                    width: '100%',
+                    height: '50px',
+                    background: `linear-gradient(to right, ${rgbInterpolation.map(color => `rgb(${color.join(',')})`).join(', ')})`
+                }} />
             </div>
 
             <div style={{ width: '100%', marginBottom: '20px' }}>
                 <h4>OKLAB 插值过渡</h4>
-                <div style={{ width: '100%', height: '50px', display: 'flex' }}>
-                    {oklabInterpolation.map((color, index) => (
-                        <div
-                            key={index}
-                            style={{
-                                width: `${100 / oklabInterpolation.length}%`,
-                                background: `rgb(${chroma.oklab(color[0], color[1], color[2]).rgb().join(',')})`,
-                                height: '100%',
-                            }}
-                        />
-                    ))}
-                </div>
+                <div style={{
+                    width: '100%',
+                    height: '50px',
+                    background: `linear-gradient(to right, ${oklabInterpolation.map(color => `rgb(${chroma.oklab(color[0], color[1], color[2]).rgb().join(',')})`).join(', ')})`
+                }} />
             </div>
 
             <div style={{ width: '100%', marginBottom: '20px' }}>
                 <h4>OKLCH 插值过渡</h4>
-                <div style={{ width: '100%', height: '50px', display: 'flex' }}>
-                    {oklchInterpolation.map((color, index) => (
-                        <div
-                            key={index}
-                            style={{
-                                width: `${100 / oklchInterpolation.length}%`,
-                                background: `rgb(${chroma.oklch(color[0], color[1], color[2]).rgb().join(',')})`,
-                                height: '100%',
-                            }}
-                        />
-                    ))}
-                </div>
+                <div style={{
+                    width: '100%',
+                    height: '50px',
+                    background: `linear-gradient(to right, ${oklchInterpolation.map(color => `rgb(${chroma.oklch(color[0], color[1], color[2]).rgb().join(',')})`).join(', ')})`
+                }} />
             </div>
         </div>
     );
