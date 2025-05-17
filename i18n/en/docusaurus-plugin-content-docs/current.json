@@ -1,0 +1,30 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.tutorialSidebar.category.基本动画": {
+    "message": "Basic Animation",
+    "description": "The label for category 基本动画 in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.基本动画.link.generated-index.description": {
+    "message": "Implement Animation Using Internal DSL and MilInstantAnimator",
+    "description": "The generated-index page description for category 基本动画 in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.状态动画": {
+    "message": "State Animation",
+    "description": "The label for category 状态动画 in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.UI 组件": {
+    "message": "UI Component",
+    "description": "The label for category UI 组件 in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.其他": {
+    "message": "Others",
+    "description": "The label for category 其他 in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.实验性功能": {
+    "message": "Experimental",
+    "description": "The label for category 实验性功能 in sidebar tutorialSidebar"
+  }
+}

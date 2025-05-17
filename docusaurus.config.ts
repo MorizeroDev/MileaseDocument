@@ -70,6 +70,10 @@ const config: Config = {
           label: '教程',
         },
         {
+          type: 'localeDropdown',
+          position: 'right',
+        },
+        {
           href: 'https://github.com/MorizeroDev/Milease',
           label: 'GitHub',
           position: 'right',
