@@ -2,17 +2,14 @@ import ColorTransformation from '@site/src/components/Experimental/ColorTransfor
 
 # Color Transformer
 
-In Unity, the Color object uses the RGB space. However, when performing color interpolation, the RGB space does not accurately reflect the human eye’s perception of color changes,  
-which can result in unnatural transitions or noticeable brightness fluctuations. This seriously affects the quality of animation presentation.
+In Unity, the Color object uses the RGB space. However, when performing color interpolation, the RGB space does not accurately reflect the human eye’s perception of color changes, which can result in unnatural transitions or noticeable brightness fluctuations. This seriously affects the quality of animation presentation.
 
-To address this issue, we provide an interpolation implementation based on the [OKLCH](https://oklch.com) color space, which aligns better with human visual perception of color transitions,  
-resulting in a smoother overall visual effect.
+To address this issue, we provide an interpolation implementation based on the [OKLCH](https://oklch.com) color space, which aligns better with human visual perception of color transitions, resulting in a smoother overall visual effect.
 
 Implementation: [ColorTransformation](https://github.com/MorizeroDev/Milease/blob/master/Scripts/Milease/Translate/ColorTransformation.cs)
 
 ## Demo
 
-<ColorTransformation></ColorTransformation>
+<ColorTransformation language="en"></ColorTransformation>
 
-When comparing the effect, pay attention to whether the visual brightness of the color bar changes significantly from left to right. During animation playback, brightness fluctuations often cause  
-harsh visual effects, which are detrimental to the presentation.
+When comparing the effect, pay attention to whether the visual brightness of the color bar changes significantly from left to right. During animation playback, brightness fluctuations often cause harsh visual effects, which are detrimental to the presentation.

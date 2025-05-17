@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { SketchPicker } from 'react-color';
+import React, {useState, useEffect, useRef} from 'react';
+import {SketchPicker} from 'react-color';
 import chroma from 'chroma-js';
 
 function randomColor() {
@@ -16,7 +16,29 @@ function rotateHue(color, minDeg = 120, maxDeg = 240) {
 
 const intermediate = 1024
 
-const ColorInterpolation = () => {
+function getLabel(language: string) {
+    if (language == "chs") {
+        return {
+            startColorLabel: "开始颜色",
+            endColorLabel: "结束颜色",
+            transformRGBLabel: "RGB 插值过渡",
+            transformOKLABLabel: "OKLAB 插值过渡",
+            transformOKLCHLabel: "OKLCH 插值过渡",
+        }
+    } else {
+        return {
+            startColorLabel: "Start Color",
+            endColorLabel: "End Color",
+            transformRGBLabel: "RGB Mode",
+            transformOKLABLabel: "OKLAB Mode",
+            transformOKLCHLabel: "OKLCH Mode",
+        }
+    }
+}
+
+const ColorInterpolation = ({language}) => {
+    const labelContent = getLabel(language);
+
     const [color1, setColor1] = useState("#9013FE");
     const [color2, setColor2] = useState("#50E3C2");
 
@@ -59,59 +81,71 @@ const ColorInterpolation = () => {
     const oklabInterpolation = generateOKLABInterpolation();
 
     return (
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', width: '80%', marginBottom: '20px' }}>
-                <div style={{ display: 'flex', alignItems: 'first baseline', position: 'relative'}}>
-                    <h3 style={{ marginRight: '10px', marginBottom: 0 }}>开始颜色</h3>
+        <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+            <div style={{display: 'flex', justifyContent: 'space-between', width: '80%', marginBottom: '20px'}}>
+                <div style={{display: 'flex', alignItems: 'first baseline', position: 'relative'}}>
+                    <h3 style={{marginRight: '10px', marginBottom: 0}}> {labelContent.startColorLabel}</h3>
                     <div
                         onClick={() => setShowPicker1(!showPicker1)}
-                        style={{ width: 16, height: 16, backgroundColor: color1, cursor: 'pointer', border: '1px solid #ccc' }}
+                        style={{
+                            width: 16,
+                            height: 16,
+                            backgroundColor: color1,
+                            cursor: 'pointer',
+                            border: '1px solid #ccc'
+                        }}
                     />
                     {showPicker1 && (
-                        <div style={{ position: 'absolute', zIndex: 2, top: '50px' }} ref={pickerRef1}>
-                            <SketchPicker color={color1} onChange={(color) => setColor1(color.hex)} />
+                        <div style={{position: 'absolute', zIndex: 2, top: '50px'}} ref={pickerRef1}>
+                            <SketchPicker color={color1} onChange={(color) => setColor1(color.hex)}/>
                         </div>
                     )}
                 </div>
-                <div style={{ display: 'flex', alignItems: 'first baseline', position: 'relative' }}>
-                    <h3 style={{ marginRight: '10px', marginBottom: 0 }}>结束颜色</h3>
+                <div style={{display: 'flex', alignItems: 'first baseline', position: 'relative'}}>
+                    <h3 style={{marginRight: '10px', marginBottom: 0}}>{labelContent.endColorLabel}</h3>
                     <div
                         onClick={() => setShowPicker2(!showPicker2)}
-                        style={{ width: 16, height: 16, backgroundColor: color2, cursor: 'pointer', border: '1px solid #ccc' }}
+                        style={{
+                            width: 16,
+                            height: 16,
+                            backgroundColor: color2,
+                            cursor: 'pointer',
+                            border: '1px solid #ccc'
+                        }}
                     />
                     {showPicker2 && (
-                        <div style={{ position: 'absolute', zIndex: 2, top: '50px' }} ref={pickerRef2}>
-                            <SketchPicker color={color2} onChange={(color) => setColor2(color.hex)} />
+                        <div style={{position: 'absolute', zIndex: 2, top: '50px'}} ref={pickerRef2}>
+                            <SketchPicker color={color2} onChange={(color) => setColor2(color.hex)}/>
                         </div>
                     )}
                 </div>
             </div>
 
-            <div style={{ width: '100%', marginBottom: '20px' }}>
-                <h4>RGB 插值过渡</h4>
+            <div style={{width: '100%', marginBottom: '20px'}}>
+                <h4>{labelContent.transformRGBLabel}</h4>
                 <div style={{
                     width: '100%',
                     height: '50px',
                     background: `linear-gradient(to right, ${rgbInterpolation.map(color => `rgb(${color.join(',')})`).join(', ')})`
-                }} />
+                }}/>
             </div>
 
-            <div style={{ width: '100%', marginBottom: '20px' }}>
-                <h4>OKLAB 插值过渡</h4>
+            <div style={{width: '100%', marginBottom: '20px'}}>
+                <h4>{labelContent.transformOKLABLabel}</h4>
                 <div style={{
                     width: '100%',
                     height: '50px',
                     background: `linear-gradient(to right, ${oklabInterpolation.map(color => `rgb(${chroma.oklab(color[0], color[1], color[2]).rgb().join(',')})`).join(', ')})`
-                }} />
+                }}/>
             </div>
 
-            <div style={{ width: '100%', marginBottom: '20px' }}>
-                <h4>OKLCH 插值过渡</h4>
+            <div style={{width: '100%', marginBottom: '20px'}}>
+                <h4>{labelContent.transformOKLCHLabel}</h4>
                 <div style={{
                     width: '100%',
                     height: '50px',
                     background: `linear-gradient(to right, ${oklchInterpolation.map(color => `rgb(${chroma.oklch(color[0], color[1], color[2]).rgb().join(',')})`).join(', ')})`
-                }} />
+                }}/>
             </div>
         </div>
     );
